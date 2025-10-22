@@ -20,7 +20,7 @@ def load_data():
         except UnicodeDecodeError:
             df = pd.read_csv(
                 "https://drive.google.com/uc?id=1fakOKy2kERH1DoEmCjOl9GgvAxGFXGgP",
-                encoding="latin1"
+                encoding="windows-1254"
             )
 
         book_embeddings = np.load("book_embeddings_FULL.npy", allow_pickle=True)
@@ -134,3 +134,4 @@ if st.button('Kitap Öner'):
                 st.dataframe(recommendations[['name', 'author', 'book_type']])
     else:
         st.warning("Lütfen bir kitap adı veya konu girin.")
+

@@ -9,8 +9,9 @@ from dotenv import load_dotenv
 import os
 
 # --- CONFIG: Google Drive file IDs (replace with your own) ---
-CSV_DRIVE_ID = "https://drive.google.com/uc?id=157Hr56uDKVgBvptwzy7SN9fxvI7jbz_X"  # mevcut CSV id'niz
-NPY_DRIVE_ID = "https://drive.google.com/uc?id=1fakOKy2kERH1DoEmCjOl9GgvAxGFXGgP"    # buraya book_embeddings_FULL.npy dosya id'sini koyun
+# NOTE: You can provide either the raw file id (recommended) or the full drive URL.
+CSV_DRIVE_ID = "157Hr56uDKVgBvptwzy7SN9fxvI7jbz_X"  # sadece CSV dosya id'niz
+NPY_DRIVE_ID = "1fakOKy2kERH1DoEmCjOl9GgvAxGFXGgP"   # book_embeddings_FULL.npy dosya id'si
 CSV_LOCAL = "clean_books_v2.csv"
 NPY_LOCAL = "book_embeddings_FULL.npy"
 
@@ -22,14 +23,18 @@ def ensure_gdown():
         st.info("Gerekli paketler eksik, gdown yüklenecek...")
         os.system(f"{sys.executable} -m pip install --upgrade gdown")
 
-def download_from_gdrive(file_id: str, dest_path: str):
+def download_from_gdrive(file_id_or_url: str, dest_path: str):
     if os.path.exists(dest_path):
         return
     ensure_gdown()
     import gdown
-    url = f"https://drive.google.com/uc?id={file_id}"
+    # Eğer kullanıcı tam bir URL vermişse onu kullan; değilse id'yi kullanarak uc?id=... oluştur
+    if str(file_id_or_url).startswith("http"):
+        url = file_id_or_url
+    else:
+        url = f"https://drive.google.com/uc?id={file_id_or_url}"
     try:
-        st.info(f"Dosya indiriliyor: {os.path.basename(dest_path)} (Drive id: {file_id})")
+        st.info(f"Dosya indiriliyor: {os.path.basename(dest_path)} (Drive kaynak: {file_id_or_url})")
         gdown.download(url, dest_path, quiet=False)
     except Exception as e:
         st.error(f"Dosya indirilirken hata oluştu: {e}")
@@ -173,4 +178,3 @@ if st.button('Kitap Öner'):
                 st.dataframe(recommendations[['name', 'author', 'book_type']])
     else:
         st.warning("Lütfen bir kitap adı veya konu girin.")
-

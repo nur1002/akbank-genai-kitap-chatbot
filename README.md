@@ -1,5 +1,6 @@
 # akbank-genai-kitap-chatbot
 
+https://akbank-genai-kitap-chatbot-bnhamf53i7wc42k4nvoev2.streamlit.app/
 
 📚 RAG Destekli Kitap Öneri Motoru
 🎯 Projenin Amacı

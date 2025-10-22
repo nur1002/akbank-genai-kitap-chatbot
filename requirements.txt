@@ -4,3 +4,5 @@ numpy
 scikit-learn
 sentence-transformers
 torch
+google-generativeai
+python-dotenv

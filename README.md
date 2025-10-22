@@ -124,9 +124,7 @@ Gemini modeliyle kişisel öneri metni üretir
 
 Kitap türlerine göre otomatik filtreleme yapar (fantastik, roman, polisiye vb.)
 
-🖼️ Örnek Ekran Görüntüsü
 
-(Eğer varsa buraya bir görsel linki ya da açıklaması ekleyebilirsin.)
 
 📈 Sonuç
 

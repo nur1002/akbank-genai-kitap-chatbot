@@ -9,8 +9,8 @@ from dotenv import load_dotenv
 import os
 
 # --- CONFIG: Google Drive file IDs (replace with your own) ---
-CSV_DRIVE_ID = "1fakOKy2kERH1DoEmCjOl9GgvAxGFXGgP"  # mevcut CSV id'niz
-NPY_DRIVE_ID = "REPLACE_WITH_YOUR_NPY_FILE_ID"    # buraya book_embeddings_FULL.npy dosya id'sini koyun
+CSV_DRIVE_ID = "https://drive.google.com/uc?id=157Hr56uDKVgBvptwzy7SN9fxvI7jbz_X"  # mevcut CSV id'niz
+NPY_DRIVE_ID = "https://drive.google.com/uc?id=1fakOKy2kERH1DoEmCjOl9GgvAxGFXGgP"    # buraya book_embeddings_FULL.npy dosya id'sini koyun
 CSV_LOCAL = "clean_books_v2.csv"
 NPY_LOCAL = "book_embeddings_FULL.npy"
 
@@ -173,3 +173,4 @@ if st.button('Kitap Öner'):
                 st.dataframe(recommendations[['name', 'author', 'book_type']])
     else:
         st.warning("Lütfen bir kitap adı veya konu girin.")
+
